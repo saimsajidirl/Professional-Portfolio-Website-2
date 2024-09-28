@@ -1,0 +1,715 @@
+/* Importing Google Fonts for typography variety */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&family=Roboto+Mono&display=swap');
+
+/* Custom properties for easy theming */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --text-color: #333333;
+    --background-color: #f4f4f4;
+    --card-background: #ffffff;
+    --header-height: 80px;
+    --footer-height: 300px;
+    --transition-speed: 0.3s;
+    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Advanced CSS Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%; /* For easier rem calculations */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 2rem;
+  text-align: center; /* Centers the text */
+}
+
+/* Header and Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.9) 0%, rgba(46, 204, 113, 0.9) 100%);
+    z-index: 1000;
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logonav {
+    display: flex;
+    align-items: center;
+}
+
+.logonav img {
+    width: 50px;
+    height: auto;
+    margin-right: 1rem;
+    transition: transform var(--transition-speed) ease;
+}
+
+.logonav:hover img {
+    transform: rotate(360deg);
+}
+
+.logotext {
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all var(--transition-speed) ease;
+}
+
+.logotext:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    margin: 0 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transform: translateX(-100%);
+    transition: transform var(--transition-speed) ease;
+}
+
+.nav-link:hover::before {
+    transform: translateX(0);
+}
+
+/* Hero Section with Parallax Effect */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-container {
+    z-index: 1;
+    color: #ffffff;
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1 {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.5rem 3rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    transform: translateX(-100%);
+    transition: all var(--transition-speed) ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: translateX(0);
+}
+
+.btn:hover {
+    color: #ffffff;
+}
+.featured {
+  padding: 10rem 0;
+  background-color: var(--card-background);
+}
+
+.featured-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.glow-fect {
+  text-align: center; /* Center text in the parent element */
+}
+
+.glow-fect h2 {
+  font-size: 4.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  position: relative;
+  display: inline-block; /* Allows padding without affecting centering */
+  padding: 1rem 2rem;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.glow-fect h2:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+}
+
+.anime-card {
+  background-color: var(--card-background);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed) ease; /* Only transform for hover */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.anime-card-link {
+  text-decoration: underline;
+  color: white;
+}
+
+.anime-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  opacity: 0; /* Ensure no gradient effect on hover */
+  transition: opacity var(--transition-speed) ease;
+  z-index: 1;
+}
+
+.anime-card:hover {
+  transform: scale(1.03); /* Only zoom */
+  box-shadow: none; /* No shadow effect */
+}
+
+.anime-card-image {
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.anime-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.anime-card:hover .anime-card-image img {
+  transform: scale(1.1); /* Image zoom effect */
+}
+
+.anime-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  flex-grow: 1;
+  min-height: 150px; /* Set a minimum height */
+  padding: 0;
+  margin: 0;
+}
+
+.anime-card-content h3 {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  transition: color var(--transition-speed) ease;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Increased */
+  -webkit-box-orient: vertical;
+  margin: 0;
+}
+
+.anime-card-content p {
+  font-size: 1.4rem;
+  color: #666;
+  transition: color var(--transition-speed) ease;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Increased */
+  -webkit-box-orient: vertical;
+  margin: 0;
+}
+
+.anime-card-content a {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Inherit color from parent */
+  position: relative; /* Required for the pseudo-element */
+}
+
+.anime-card-content a:hover,
+.anime-card-content a:focus {
+  text-decoration: none; /* Ensures no underline on hover/focus */
+  color: inherit; /* Inherit color from parent */
+}
+
+.anime-card-content a::after {
+  content: ''; /* Create a pseudo-element */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0; /* Make it invisible */
+  background-color: var(--card-background); /* Match the background color */
+  transition: none; /* No transition */
+  width: 100%; /* Full width */
+}
+
+
+
+
+.skills {
+  background-color: #f8f9fa;
+  padding: 10rem 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center; /* Center all text within the skills section */
+}
+
+.skills::before,
+.skills::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.skills::before {
+  top: -100px;
+  left: -100px;
+}
+
+.skills::after {
+  bottom: -100px;
+  right: -100px;
+}
+
+.skills h2 {
+  font-size: 4.8rem;
+  margin-bottom: 6rem;
+  color: var(--text-color);
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  position: relative;
+  width: 120px; /* Reduced width */
+  height: 120px; /* Reduced height */
+  background-color: var(--card-background);
+  border-radius: 50%; /* Make it circular */
+  overflow: hidden; /* Ensure the content fits within the circular shape */
+}
+
+.skill-card img {
+  width: 100%; /* Cover the whole card */
+  height: 100%; /* Cover the whole card */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+  transition: transform var(--transition-speed) ease; /* Apply transition to transform */
+}
+
+.skill-card:hover img {
+  transform: scale(1.1); /* Zoom effect */
+}
+
+.hover-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem; /* Adjust font size to fit smaller cards */
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.skill-card:hover .hover-box {
+  opacity: 1; /* Optional: Show hover box on image hover */
+}
+
+/* Achievements Section with Perspective Cards */
+.achievements {
+    padding: 10rem 0;
+    background-color: var(--card-background);
+}
+
+.achievements h2 {
+    text-align: center;
+    font-size: 4.8rem;
+    margin-bottom: 6rem;
+    color: var(--text-color);
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    perspective: 1000px;
+}
+
+.achievement-card {
+    background-color: var(--card-background);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: all var(--transition-speed) ease;
+    transform-style: preserve-3d;
+}
+
+.achievement-card:hover {
+    transform: rotateY(10deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease;
+}
+
+.achievement-card:hover img {
+    transform: scale(1.05) translateZ(20px);
+}
+
+.achievement-content {
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+    backdrop-filter: blur(10px);
+}
+
+.achievement-content h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.achievement-content p {
+    font-size: 1.6rem;
+    color: #666;
+}
+/* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+  color: #ffffff;
+  padding: 6rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer::before,
+.footer::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+.footer::before {
+  top: -150px;
+  left: -150px;
+}
+
+.footer::after {
+  bottom: -150px;
+  right: -150px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-links {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.footer-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.footer-logo img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease; /* Keep zoom animation */
+}
+
+.footer-logo:hover img {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.footer-info {
+  width: 100%;
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-info p {
+  margin-bottom: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* Space between links */
+  margin-top: 2rem;
+}
+
+.social-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.8rem; /* Font size */
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  padding: 0.5rem; /* Add padding around links */
+}
+
+.social-links img {
+  width: 3rem; /* Increased width for larger images */
+  height: 3rem; /* Increased height for larger images */
+  margin-right: 0.5rem; /* Space between image and text */
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-5px);
+}
+
+.social-links a:hover img {
+  transform: scale(1.2); /* Image scaling on hover */
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+  }
+
+  .footer-logo {
+      margin-bottom: 3rem;
+  }
+}
+
+/* Animation for footer elements */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.footer-content > *,
+.footer-info > * {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.footer-content > *:nth-child(1) { animation-delay: 0.2s; }
+.footer-content > *:nth-child(2) { animation-delay: 0.4s; }
+.footer-info > *:nth-child(1) { animation-delay: 0.6s; }
+.footer-info > *:nth-child(2) { animation-delay: 0.8s; }
+.footer-info > *:nth-child(3) { animation-delay: 1s; }
